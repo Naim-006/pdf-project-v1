@@ -10,7 +10,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "PDFJAR | Online PDF tools for PDF Lovers",
+  title: "PDFBoss | Online PDF tools for PDF Lovers",
   description:
     "Powerful tools for working with PDFs. No installation, no uploads, no hassle. Merge, split, compress, convert, and edit PDFs online - fast, secure, and completely free.",
   generator: "v0.app",
