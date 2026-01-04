@@ -15,8 +15,8 @@ export function MobileMenu() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="lg:hidden h-12 w-12 rounded-2xl hover:bg-primary/5 transition-all duration-300" aria-label="Open Navigation Menu">
-          {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+        <Button variant="ghost" size="icon" className="lg:hidden h-14 w-14 rounded-2xl hover:bg-primary/5 transition-all duration-300" aria-label="Open Navigation Menu">
+          {open ? <X className="h-9 w-9" /> : <Menu className="h-9 w-9" />}
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="w-full sm:w-[400px] border-none glass-card p-0 flex flex-col h-full animate-in slide-in-from-right duration-500">
