@@ -39,17 +39,20 @@ export function SearchDialog() {
         <>
             <button
                 onClick={() => setOpen(true)}
-                className="group relative flex h-10 w-full items-center justify-start gap-2 rounded-xl bg-primary/5 px-3 text-sm font-medium text-muted-foreground ring-offset-background transition-all hover:bg-primary/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:w-48 lg:px-4"
+                className="group relative flex h-10 w-10 lg:w-48 items-center justify-center lg:justify-start gap-2 rounded-xl bg-primary/5 px-0 lg:px-4 text-sm font-medium text-muted-foreground ring-offset-background transition-all hover:bg-primary/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
                 <Search className="h-4 w-4 shrink-0 opacity-50 transition-opacity group-hover:opacity-100" />
                 <span className="hidden lg:inline-flex">Search tools...</span>
-                <span className="inline-flex lg:hidden">Search...</span>
                 <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-7 select-none items-center gap-1 rounded border border-primary/20 bg-primary/5 px-1.5 font-mono text-[10px] font-medium opacity-100 lg:flex">
                     <span className="text-xs">⌘</span>K
                 </kbd>
             </button>
             <CommandDialog open={open} onOpenChange={setOpen}>
-                <CommandInput placeholder="Search all PDF tools..." />
+                <CommandInput
+                    placeholder="Search all PDF tools..."
+                    className="outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+                />
+
                 <CommandList className="max-h-[400px]">
                     <CommandEmpty>No results found.</CommandEmpty>
                     {toolCategories.map((category) => (

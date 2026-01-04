@@ -60,8 +60,8 @@ export function FileUpload({ onFilesSelected, multiple = false, accept = ".pdf" 
                     onDragLeave={handleDrag}
                     onDragOver={handleDrag}
                     onDrop={handleDrop}
-                    className={`relative border-2 border-dashed rounded-2xl p-12 transition-all flex flex-col items-center justify-center cursor-pointer
-            ${dragActive ? "border-primary bg-primary/5 scale-[0.99]" : "border-white/10 hover:border-primary/50"}
+                    className={`relative border-2 border-dashed border-primary/40 rounded-2xl p-12 transition-all flex flex-col items-center justify-center cursor-pointer bg-primary/5
+            ${dragActive ? "border-primary bg-primary/10 scale-[0.99]" : "hover:border-primary/60"}
           `}
                 >
                     <input
