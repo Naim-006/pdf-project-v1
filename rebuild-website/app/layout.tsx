@@ -44,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans antialiased bg-background min-h-screen relative overflow-x-hidden`}>
+      <body className={`font-sans antialiased bg-background min-h-screen relative overflow-x-hidden max-w-[100vw]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
