@@ -1,7 +1,17 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, FileText, ChevronRight } from "lucide-react"
+import { Menu, X, FileText, ChevronRight, Flame, ImageIcon, FileImage, ArrowRightLeft, RefreshCw, ShieldCheck, Wrench, Files } from "lucide-react"
+
+const categoryIconMap: Record<string, { icon: React.ElementType, color: string }> = {
+  "PDF HOT TOOLS": { icon: Flame, color: "text-orange-500" },
+  "PDF TO IMAGE": { icon: ImageIcon, color: "text-blue-500" },
+  "IMAGE TO PDF": { icon: FileImage, color: "text-green-500" },
+  "CONVERT TO PDF": { icon: ArrowRightLeft, color: "text-indigo-500" },
+  "PDF CONVERT": { icon: RefreshCw, color: "text-purple-500" },
+  "PDF SECURITY": { icon: ShieldCheck, color: "text-red-500" },
+  "PDF TOOLS": { icon: Wrench, color: "text-slate-500" },
+};
 import { toolIcons } from "@/lib/tool-icons"
 import { toolCategories } from "@/lib/tool-categories"
 import { Button } from "@/components/ui/button"
@@ -37,8 +47,13 @@ export function MobileMenu() {
           <Accordion type="single" collapsible className="w-full space-y-2">
             {toolCategories.map((category, idx) => (
               <AccordionItem key={idx} value={`item-${idx}`} className="border-none">
-                <AccordionTrigger className="flex flex-row-reverse justify-end gap-3 py-4 px-4 rounded-2xl hover:bg-primary/5 transition-all font-bold text-sm text-foreground/80 hover:no-underline [&[data-state=open]]:bg-primary/5 [&[data-state=open]]:text-primary group">
+                <AccordionTrigger className="flex flex-row-reverse justify-end gap-3 py-4 px-4 rounded-2xl hover:bg-primary/5 transition-all font-bold text-sm text-foreground/80 hover:no-underline [&[data-state=open]]:bg-primary/5 [&[data-state=open]]:text-primary group text-left">
                   <span className="flex-1 text-left">{category.label}</span>
+                  {(() => {
+                    const mapping = categoryIconMap[category.label.toUpperCase()];
+                    const Icon = mapping?.icon || Files;
+                    return <Icon className={cn("h-5 w-5 shrink-0", mapping?.color)} />;
+                  })()}
                 </AccordionTrigger>
                 <AccordionContent className="pt-2 pb-4">
                   <div className="flex flex-col gap-1 pl-2">

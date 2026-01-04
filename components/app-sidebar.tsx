@@ -10,8 +10,26 @@ import {
     Settings,
     HelpCircle,
     PanelLeftClose,
-    PanelLeftOpen
+    PanelLeftOpen,
+    Flame,
+    ImageIcon,
+    FileImage,
+    ArrowRightLeft,
+    RefreshCw,
+    ShieldCheck,
+    Wrench,
+    Files
 } from "lucide-react"
+
+const categoryIconMap: Record<string, { icon: React.ElementType, color: string }> = {
+    "PDF HOT TOOLS": { icon: Flame, color: "text-orange-500" },
+    "PDF TO IMAGE": { icon: ImageIcon, color: "text-blue-500" },
+    "IMAGE TO PDF": { icon: FileImage, color: "text-green-500" },
+    "CONVERT TO PDF": { icon: ArrowRightLeft, color: "text-indigo-500" },
+    "PDF CONVERT": { icon: RefreshCw, color: "text-purple-500" },
+    "PDF SECURITY": { icon: ShieldCheck, color: "text-red-500" },
+    "PDF TOOLS": { icon: Wrench, color: "text-slate-500" },
+};
 import { cn } from "@/lib/utils"
 import { toolCategories } from "@/lib/tool-categories"
 import { toolIcons } from "@/lib/tool-icons"
@@ -80,7 +98,11 @@ export function AppSidebar() {
                                         showChevron={!isCollapsed}
                                     >
                                         <div className="flex items-center gap-3 min-w-0 flex-1">
-                                            {idx === 0 ? <FileText className="h-5 w-5 shrink-0" /> : <LayoutDashboard className="h-5 w-5 shrink-0" />}
+                                            {(() => {
+                                                const mapping = categoryIconMap[category.label.toUpperCase()];
+                                                const Icon = mapping?.icon || Files;
+                                                return <Icon className={cn("h-5 w-5 shrink-0 transition-colors", mapping?.color)} />;
+                                            })()}
                                             {!isCollapsed && <span className="truncate">{category.label}</span>}
                                         </div>
                                     </AccordionTrigger>
@@ -93,10 +115,20 @@ export function AppSidebar() {
                                                     <a
                                                         key={toolIdx}
                                                         href={tool.href}
-                                                        className="flex items-center gap-3 px-8 py-2 rounded-lg text-[13px] font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all group"
+                                                        className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-bold text-muted-foreground hover:text-foreground hover:bg-primary/5 transition-all group"
                                                     >
+                                                        <div className={cn(
+                                                            "p-1.5 rounded-lg transition-all duration-300 group-hover:scale-110",
+                                                            idx % 5 === 0 ? "bg-blue-500/10 text-blue-500" :
+                                                                idx % 5 === 1 ? "bg-orange-500/10 text-orange-500" :
+                                                                    idx % 5 === 2 ? "bg-green-500/10 text-green-500" :
+                                                                        idx % 5 === 3 ? "bg-indigo-500/10 text-indigo-500" :
+                                                                            "bg-purple-500/10 text-purple-500"
+                                                        )}>
+                                                            {Icon && <Icon className="h-4 w-4" />}
+                                                        </div>
                                                         <span className="flex-1 truncate">{tool.name}</span>
-                                                        <ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                                                        <ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-primary" />
                                                     </a>
                                                 )
                                             })}
@@ -111,12 +143,7 @@ export function AppSidebar() {
 
             {/* Sidebar Footer */}
             <div className="p-4 border-t border-primary/5 space-y-2">
-                {!isCollapsed && (
-                    <div className="flex items-center gap-2 p-3 rounded-2xl bg-primary/5 border border-primary/10 mb-4 animate-in fade-in slide-in-from-bottom-2">
 
-
-                    </div>
-                )}
 
                 <Button
                     variant="ghost"

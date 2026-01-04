@@ -15,9 +15,17 @@ import {
     FileCode,
     ImagePlus,
     FileJson,
+    FileEdit,
+    FileDigit
 } from "lucide-react"
 
 export const toolIcons = {
+    // PDF Hot Tools
+    "/tools/merge-pdf": Combine,
+    "/tools/split-pdf": Split,
+    "/tools/compress-pdf": Minimize2,
+    "/tools/edit-pdf": FileEdit,
+
     // PDF to Image
     "/tools/pdf-to-png": FileImage,
     "/tools/pdf-to-jpg": FileImage,
@@ -25,6 +33,8 @@ export const toolIcons = {
 
     // Convert to PDF
     "/tools/excel-to-pdf": FileSpreadsheet,
+    "/tools/word-to-pdf": FileDigit,
+    "/tools/pdf-to-word": FileDigit,
     "/tools/pdf-to-markdown": FileText,
     "/tools/pdf-to-text": FileText,
     "/tools/pdf-to-json": FileJson,
@@ -41,8 +51,5 @@ export const toolIcons = {
 
     // PDF Tools
     "/tools/pdf-bookmarks": Bookmark,
-    "/tools/merge-pdf": Combine,
-    "/tools/split-pdf": Split,
-    "/tools/compress-pdf": Minimize2,
     "/tools/pdf-to-html": FileCode,
 } as const
