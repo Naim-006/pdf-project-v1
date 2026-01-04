@@ -21,15 +21,15 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 export function Header() {
   return (
-    <header className="border-b border-primary/5 bg-background/40 sticky top-0 z-40 backdrop-blur-3xl" role="banner">
-      <div className="container mx-auto h-16 px-4 flex items-center">
-        {/* Left Section: Logo */}
-        <div className="flex-1 flex items-center justify-start">
+    <header className="border-b border-primary/5 bg-background/40 sticky top-0 z-40 backdrop-blur-3xl px-2" role="banner">
+      <div className="container mx-auto h-16 flex items-center justify-between gap-4">
+        {/* Left: Logo & Breadcrumbs */}
+        <div className="flex-1 flex items-center justify-start gap-6">
           <a href="/" className="flex lg:hidden items-center gap-2 group outline-none" aria-label="PDFBoss Home Page">
             <div className="bg-primary rounded-xl p-2 group-hover:bg-orange-600 group-hover:rotate-6 transition-all duration-300 shadow-lg shadow-primary/20">
               <FileText className="h-5 w-5 text-white" aria-hidden="true" />
             </div>
-            <span className="font-black text-xl tracking-tighter text-foreground">PDF<span className="text-primary">BOSS</span></span>
+            <span className="font-black text-2xl tracking-tighter text-foreground">PDF<span className="text-primary">BOSS</span></span>
           </a>
 
           {/* Contextual Title / Breadcrumbs (Desktop only) */}
@@ -43,10 +43,10 @@ export function Header() {
           </div>
         </div>
 
-        {/* Center Section: Search & Theme Toggle */}
-        <div className="flex-none flex items-center justify-center">
+        {/* Center: Search & Mode Toggle */}
+        <div className="flex items-center justify-center">
           <TooltipProvider>
-            <div className="flex items-center gap-2 p-1 bg-primary/5 rounded-2xl border border-primary/10">
+            <div className="flex items-center gap-1.5 p-1 bg-primary/5 rounded-2xl border border-primary/10">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div>
@@ -55,8 +55,6 @@ export function Header() {
                 </TooltipTrigger>
                 <TooltipContent>Search Tools</TooltipContent>
               </Tooltip>
-
-              <div className="h-4 w-[1px] bg-primary/10 hidden md:block" />
 
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -68,7 +66,7 @@ export function Header() {
           </TooltipProvider>
         </div>
 
-        {/* Right Section: Mobile Menu */}
+        {/* Right: Mobile Menu */}
         <div className="flex-1 flex items-center justify-end">
           <MobileMenu />
         </div>
