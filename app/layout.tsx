@@ -16,21 +16,8 @@ export const metadata: Metadata = {
   generator: "v0.app",
   keywords: ["PDF tools", "merge PDF", "split PDF", "compress PDF", "convert PDF", "online PDF editor"],
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/app-icon.jpg",
+    apple: "/app-icon.jpg",
   },
 }
 
